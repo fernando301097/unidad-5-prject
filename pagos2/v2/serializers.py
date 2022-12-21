@@ -1,4 +1,4 @@
-from pagos2 import models
+from pagos2.models import * 
 from rest_framework.serializers import ModelSerializer
 
 class ServicesSerializers(ModelSerializer):

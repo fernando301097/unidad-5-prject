@@ -1,8 +1,8 @@
-from .serializers import ServicesSerializers, Payment_userSerializers, Expired_paymentsSerializers
+from pagos2.v2.serializers import ServicesSerializers, Payment_userSerializers, Expired_paymentsSerializers
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import status, filters
 from rest_framework.response import Response
-from .models import Services, Payment_user, Expired_payments
+from pagos2.models import Services, Payment_user, Expired_payments
 from .pagination import PagosPagination
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
@@ -16,7 +16,7 @@ class ServicesView(ModelViewSet):
     throttle_scope = 'services'
 
 class PaymentUsersView(ModelViewSet):
-    queryset = PaymentUser.objects.all()
+    queryset = Payment_user.objects.all()
     serializer_class = Payment_userSerializers
 
     pagination_class = PagosPagination
@@ -28,7 +28,7 @@ class PaymentUsersView(ModelViewSet):
     throttle_scope = 'pagos'
     
 class ExpiredPaymentView(ModelViewSet):
-    queryset = ExpiredPayments.objects.all()
+    queryset = Expired_payments.objects.all()
 
     serializer_class = Expired_paymentsSerializers
     pagination_class = PagosPagination

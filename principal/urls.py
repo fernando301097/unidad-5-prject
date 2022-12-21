@@ -15,14 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-#from pagos2.v1 import urls as version1
-#from pagos2.v2 import urls as version2
+from rest_framework.permissions import AllowAny
+
+from pagos2.v1 import urls as v1_urls
+from pagos2.v2 import urls as v2_urls
+
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pagos.urls')),
-    #path('v1/', include(version1)),
-    #path('v2/', include(version2)),
+
+    path('v1/', include(v1_urls)),
+    path('v2/', include(v2_urls)),
 
     path('users/', include('users.urls')),
 ]
