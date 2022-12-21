@@ -18,3 +18,6 @@ class Pagos(models.Model):
     fecha_pago = models.DateField(auto_now_add=True)
     usuario = models.ForeignKey(User, on_delete =models.CASCADE, related_name='users')
     monto = models.FloatField(default=0.0)
+
+    class Meta:
+        db_table = "pagos"

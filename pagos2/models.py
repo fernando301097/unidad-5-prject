@@ -7,6 +7,12 @@ class Services(models.Model):
     description = models.CharField(max_length=100)
     logo = models.CharField(max_length=100)
 
+    class Meta:
+        db_table = "services"
+
+    def __str__(self):
+        return self.name
+
 
 
 class Payment_user(models.Model):
@@ -17,7 +23,17 @@ class Payment_user(models.Model):
     payment_date = models.DateField(auto_now_add=True)
     expiration_date= models.DateField()
 
+    class Meta:
+        db_table = "payment_user"
+
+    def __str__(self):
+        return str(self.pk)
+
+
 class Expired_payments(models.Model):
     
     payment_user_id = models.ForeignKey(Payment_user, on_delete = models.CASCADE)
     penalty_fee_amount = models.CharField(max_length=100)
+
+    class Meta:
+        db_table = "expired_payments"
