@@ -34,10 +34,12 @@ class SignUpView(generics.GenericAPIView):
 class LoginView(APIView):
 
     def post(self, request: Request):
+
         email = request.data.get("email")
         password = request.data.get("password")
 
         user = authenticate(email=email, password=password)
+        
         if user is not None:
             tokens = create_jwt_pair_for_user(user)
             idUser = User.objects.get(email=email)
